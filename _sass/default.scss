@@ -52,13 +52,19 @@ html {
   }
   &__title {
     color: #fff;
-    font-size: 41px;
+    font-size: 36px;
     text-transform: uppercase;
     margin-top: 50px;
     padding-bottom: 45px;
     margin-bottom: 25px;
     letter-spacing: 0.1em;
     position: relative;
+    @include in_size($xs) {
+      font-size: 28px;
+      margin-top: 25px;
+      padding-bottom: 30px;
+      margin-bottom: 20px;
+    }
     &:after {
       content: "";
       display: block;
@@ -72,10 +78,14 @@ html {
   }
   &__text {
     color: #fff;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 300;
     margin: 0;
     padding: 0 25px;
+    @include in_size($xs) {
+      font-size: 18px;
+      padding: 0;
+    }
     strong {
       font-weight: 400;
       text-transform: uppercase;
@@ -95,6 +105,9 @@ html {
   &__button {
     width: 100%;
   }
+  @include in_size($xs) {
+    padding: 25px;
+  }
 }
 
 .field {
@@ -105,12 +118,15 @@ html {
   &--submit {
     flex: 0 1 30%;
   }
+
   &--signup {
     margin-top: 20px;
     .field {
       &__input {
         position: absolute;
         visibility: hidden;
+        width: 5px;
+        height: 5px;
         &:checked {
           + .field__label:before {
             background: $colour_primary;
@@ -123,6 +139,7 @@ html {
         text-transform: none;
         display: flex;
         align-items: center;
+        margin: 0;
         &:before {
           content: "";
           border: 2px solid $colour_border;
@@ -154,6 +171,16 @@ html {
     padding: 10px 20px;
     line-height: 26px;
     font-size: 20px;
+  }
+  @include in_size($xs) {
+    &--email,
+    &--submit {
+      flex: 0 1 100%;
+      padding: 0;
+    }
+    &__label {
+      font-size: 20px;
+    }
   }
 }
 
@@ -191,6 +218,8 @@ html {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    max-width: 50%;
+    display: flex;
     img {
       box-shadow: -14px 10px 6px 0px rgba(#000, 0.16);
     }
@@ -199,15 +228,18 @@ html {
     flex: 0 0 50%;
     h2,
     h3 {
-      font-size: 42px;
-      line-height: 64px;
+      font-size: 32px;
+      line-height: 1.5em;
       font-weight: 600;
-      padding-right: 180px;
+      padding-right: 280px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       padding-bottom: 35px;
       margin-bottom: 10px;
       position: relative;
+      @include in_size($md) {
+        padding-right: 150px;
+      }
       &:after {
         content: "";
         display: block;
@@ -220,7 +252,7 @@ html {
       }
     }
     p {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 300;
       strong {
         font-weight: 400;
@@ -240,6 +272,7 @@ html {
     .strip {
       &__image {
         right: 0;
+        justify-content: flex-start;
       }
       &__content {
         padding-right: 100px;
@@ -253,6 +286,7 @@ html {
     .strip {
       &__image {
         left: 0;
+        justify-content: flex-end;
       }
       &__content {
         padding-left: 100px;
@@ -262,11 +296,40 @@ html {
       }
     }
   }
+  @include in_size($mobile) {
+    padding: 25px 0;
+    &__wrapper {
+      flex-wrap: wrap;
+    }
+    &__image {
+      position: static;
+      flex: 0 1 100%;
+      transform: none;
+      max-width: none;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &__content {
+      padding: 0 !important;
+      flex: 0 1 100%;
+      h2,
+      h3 {
+        padding-right: 0;
+        font-size: 28px;
+        line-height: 1;
+      }
+      p {
+        font-size: 18px;
+      }
+    }
+  }
 }
 
 .footer {
   display: flex;
   justify-content: center;
   padding: 20px 0;
-  background:#FFF;
+  background: #fff;
 }
