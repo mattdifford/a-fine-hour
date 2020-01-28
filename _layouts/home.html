@@ -3,12 +3,6 @@
 {%-include_cached head.html-%}
 
 <body>
-    {% if jekyll.environment != "development" %}
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZDM72D" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    {%endif%}
     {%- include_cached header.html -%}
     <div class="strips">
         {% include_cached strip.html text=page.strip_1.text image=page.strip_1.image image_position=page.strip_1.image_position %}
