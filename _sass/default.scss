@@ -237,7 +237,7 @@ html {
       padding-bottom: 35px;
       margin-bottom: 10px;
       position: relative;
-      @include in_size($md) {
+      @include in_size($md-only) {
         padding-right: 150px;
       }
       &:after {
