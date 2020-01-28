@@ -5,6 +5,9 @@ html {
   font-weight: 400;
   color: $colour_primary;
 }
+.webp .header {
+  background-image: url("/images/upload/header.webp");
+}
 .header {
   min-height: 100vh;
   background-color: $colour_primary;
