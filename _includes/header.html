@@ -1,3 +1,15 @@
 <div class="header">
-    
+    <div class="container">
+        <div class="header__inner">
+            {%include picture.html url="/images/upload/logo.png" alt=site.title class="header__logo" %}
+            <div class="header__content">
+                <h1 class="header__title">Do you enjoy the finer things in life?</h1>
+                <p class="header__text">Sign up to the <strong>{{site.title}}</strong> newsletter and receive £15 off
+                    your
+                    first luxury
+                    experience or Gift Card order.</p>
+            </div>
+            {%include_cached form.html%}
+        </div>
+    </div>
 </div>

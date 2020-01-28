@@ -1,0 +1,17 @@
+{% if include.image && include.text %}
+<div class="strip strip--image-{{-include.image_position-}}">
+    <div class="container">
+        <div class="strip__wrapper scrollwatch">
+            <div class="strip__image">
+                {% if include.image %}
+                {%-assign image_type = include.image | slice: -3, 3-%}
+                {%-include picture.html url=include.image alt=site.name type=image_type-%}
+                {%endif%}
+            </div>
+            <div class="strip__content">
+                {{-include.text | markdownify-}}
+            </div>
+        </div>
+    </div>
+</div>
+{%endif%}
