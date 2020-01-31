@@ -10,8 +10,10 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+strong {
   font-family: $fonts_bold;
+  font-weight: normal;
 }
 .webp .header {
   background-image: url("/images/upload/header.webp");
