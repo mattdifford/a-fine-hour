@@ -1,0 +1,44 @@
+/*
+ * Legal Disclaimer
+ *
+ * These Fonts are licensed only for use on these domains and their subdomains:
+ * afinehour.com
+ *
+ * It is illegal to download or use them on other websites.
+ *
+ * While the @font-face statements below may be modified by the client, this
+ * disclaimer may not be removed.
+ *
+ * Lineto.com, 2019
+ */
+
+
+ @font-face {
+    font-family: "Brown-Bold";
+    src: url("/assets/fonts/lineto-brown-bold.eot");
+    src: url("/assets/fonts/lineto-brown-bold.eot?#iefix") format("embedded-opentype"),
+         url("/assets/fonts/lineto-brown-bold.woff2") format("woff2"),
+         url("/assets/fonts/lineto-brown-bold.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Brown-Light";
+    src: url("/assets/fonts/lineto-brown-light.eot");
+    src: url("/assets/fonts/lineto-brown-light.eot?#iefix") format("embedded-opentype"),
+         url("/assets/fonts/lineto-brown-light.woff2") format("woff2"),
+         url("/assets/fonts/lineto-brown-light.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Brown-Regular";
+    src: url("/assets/fonts/lineto-brown-regular.eot");
+    src: url("/assets/fonts/lineto-brown-regular.eot?#iefix") format("embedded-opentype"),
+         url("/assets/fonts/lineto-brown-regular.woff2") format("woff2"),
+         url("/assets/fonts/lineto-brown-regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }

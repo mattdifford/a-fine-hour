@@ -1,9 +1,17 @@
 @import "vars.scss";
+@import "fonts.scss";
 
 html {
-  font-family: $fonts_primary;
-  font-weight: 400;
+  font-family: $fonts_normal;
   color: $colour_primary;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $fonts_bold;
 }
 .webp .header {
   background-image: url("/images/upload/header.webp");
@@ -88,7 +96,7 @@ html {
   &__text {
     color: #fff;
     font-size: 20px;
-    font-weight: 300;
+    font-family: $fonts_light;
     margin: 0;
     padding: 0 25px;
     @include in_size($xs) {
@@ -96,7 +104,7 @@ html {
       padding: 0;
     }
     strong {
-      font-weight: 400;
+      font-family: $fonts_normal;
       text-transform: uppercase;
     }
   }
@@ -119,7 +127,7 @@ html {
   }
   &__message {
     font-size: 16px;
-    font-weight: 300;
+    font-family: $fonts_light;
     padding: 5px;
     text-align: center;
     flex: 0 1 100%;
@@ -159,7 +167,7 @@ html {
       }
       &__label {
         font-size: 16px;
-        font-weight: 300;
+        font-family: $fonts_light;
         text-transform: none;
         display: flex;
         align-items: center;
@@ -180,7 +188,7 @@ html {
     width: 100%;
     text-transform: uppercase;
     font-size: 24px;
-    font-weight: 600;
+    font-family: $fonts_bold;
     color: $colour_primary;
     display: block;
     text-align: left;
@@ -191,7 +199,7 @@ html {
     border: none;
     display: block;
     width: 100%;
-    font-family: $fonts_primary;
+    font-family: $fonts_normal;
     padding: 10px 20px;
     line-height: 26px;
     font-size: 20px;
@@ -212,9 +220,9 @@ html {
   background: $colour_primary;
   border: 2px solid $colour_primary;
   color: #fff;
-  font-family: $fonts_primary;
+  font-family: $fonts_normal;
   padding: 8px 30px;
-  font-weight: 600;
+  font-family: $fonts_bold;
   text-transform: uppercase;
   font-size: 20px;
   line-height: 26px;
@@ -254,7 +262,7 @@ html {
     h3 {
       font-size: 32px;
       line-height: 1.5em;
-      font-weight: 600;
+      font-family: $fonts_bold;
       padding-right: 280px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -277,9 +285,9 @@ html {
     }
     p {
       font-size: 20px;
-      font-weight: 300;
+      font-family: $fonts_light;
       strong {
-        font-weight: 400;
+        font-family: $fonts_normal;
         text-transform: uppercase;
       }
     }
