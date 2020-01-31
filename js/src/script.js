@@ -31,4 +31,55 @@ $(document).ready(function () {
             $("html,body").animate({ scrollTop: $($(this).attr("href")).offset().top - 100 }, 750);
         }
     });
+    $('#signup_form').on("submit", function () {
+        var formData = $(this).serializeObject();
+        $.ajax({
+            async: true,
+            url: 'https://afinehour.com/api/subscribe/email',
+            data: formData,
+            type: 'POST',
+            success: function (result) {
+                var msg;
+                var success = false;
+                var form = $('#signup_form');
+                if (result.response.status === 'subscribed') {
+                    success = true;
+                    msg = 'You have successfully subscribed'
+                } else if (typeof result.response.title !== "undefined") {
+                    var response_title = result.response.title;
+                    if (response_title.indexOf('Member exists') >= 0) {
+                        msg = 'This email is already subscribed to our newsletter';
+                    }
+                    if (response_title.indexOf('Invalid Resource') >= 0) {
+                        msg = 'Please check your email address and try again';
+                    }
+                } else {
+                    msg = 'Something went wrong, please try again.';
+                }
+                if (success) {
+                    form.find('.form__field').hide();
+                }
+                form.append('<p class="form__message ' + (success ? 'form__message--success' : 'form__message--error') + '">' + msg + '</p>');
+            },
+            error: function (e) {
+                form.append('<p class="form__message form__message--error">Something went wrong, please try again.</p>');
+            }
+        });
+    });
 });
+
+$.fn.serializeObject = function () {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function () {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};

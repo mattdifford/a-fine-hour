@@ -8,12 +8,18 @@ html {
 .webp .header {
   background-image: url("/images/upload/header.webp");
 }
+
+.no-webp .header {
+  background-image: url("/images/upload/header.png");
+}
 .header {
   min-height: 100vh;
   background-color: $colour_primary;
-  background-image: url("/images/upload/header.png");
   position: relative;
   padding: 50px 0;
+  @include in_size($xs) {
+    padding: 20px 0;
+  }
   &:before {
     content: "";
     position: absolute;
@@ -111,6 +117,20 @@ html {
   @include in_size($xs) {
     padding: 25px;
   }
+  &__message {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 5px;
+    text-align: center;
+    flex: 0 1 100%;
+    color: #fff;
+    &--success {
+      background: #28a745;
+    }
+    &--error {
+      background: #ffc107;
+    }
+  }
 }
 
 .field {
@@ -132,6 +152,7 @@ html {
         height: 5px;
         &:checked {
           + .field__label:before {
+            border-color: $colour_primary;
             background: $colour_primary;
           }
         }
@@ -150,7 +171,7 @@ html {
           height: 15px;
           display: inline-block;
           margin-right: 10px;
-          transition: background 0.2s ease-in-out 0s;
+          transition: all 0.2s ease-in-out 0s;
         }
       }
     }
@@ -276,6 +297,9 @@ html {
       &__image {
         right: 0;
         justify-content: flex-start;
+        @include in_size($mobile) {
+          justify-content: center;
+        }
       }
       &__content {
         padding-right: 100px;
@@ -290,6 +314,9 @@ html {
       &__image {
         left: 0;
         justify-content: flex-end;
+        @include in_size($mobile) {
+          justify-content: center;
+        }
       }
       &__content {
         padding-left: 100px;
