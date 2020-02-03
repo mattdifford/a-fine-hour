@@ -1,0 +1,7 @@
+@import "vars.scss";
+.header {
+  background-color: $colour_primary;
+  &__inner {
+    opacity: 0;
+  }
+}
