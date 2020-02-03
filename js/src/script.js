@@ -33,6 +33,7 @@ $(document).ready(function () {
     });
     $('#signup_form').on("submit", function (e) {
         e.preventDefault();
+        $('.form__message').remove();
         var formData = $(this).serializeObject();
         formData.lp_campaign_id = '5e30378c0b5a5';
         formData.lp_campaign_key = 'nNXfVJ7d4Gzcwby2Zp6P';
@@ -42,32 +43,32 @@ $(document).ready(function () {
             url: 'https://savvy.leadspediatrack.com/post.do',
             data: formData,
             type: 'POST',
+            dataType: "xml",
             success: function (data) {
-                console.log(data);
-                // var msg;
-                // var success = false;
-                // var form = $('#signup_form');
-                // if (result.response.status === 'subscribed') {
-                //     success = true;
-                //     msg = 'You have successfully subscribed'
-                // } else if (typeof result.response.title !== "undefined") {
-                //     var response_title = result.response.title;
-                //     if (response_title.indexOf('Member exists') >= 0) {
-                //         msg = 'This email is already subscribed to our newsletter';
-                //     }
-                //     if (response_title.indexOf('Invalid Resource') >= 0) {
-                //         msg = 'Please check your email address and try again';
-                //     }
-                // } else {
-                //     msg = 'Something went wrong, please try again.';
-                // }
+                var response = data.all;
+                var nodes = [];
+                for (i = 0; i < response.length; i++) {
+                    nodes[data.all[i].nodeName] = i;
+                }
+                var result_index = nodes["result"];
+                var error_index = nodes["error"];
+                var success = true;
+                var msg = 'You have successfully subscribed. Check your inbox for your £15 off code';
+                var form = $('#signup_form');
+                if (response[result_index].innerHTML === 'failed') {
+                    var success = false;
+                    if (response[error_index].innerHTML === 'Invalid Email') {
+                        msg = 'Please check your email address and try again';
+                    } else {
+                        msg = 'This email address is already subscribed';
+                    }
+                }
                 // if (success) {
                 //     form.find('.form__field').hide();
                 // }
-                // form.append('<p class="form__message ' + (success ? 'form__message--success' : 'form__message--error') + '">' + msg + '</p>');
+                form.append('<p class="form__message ' + (success ? 'form__message--success' : 'form__message--error') + '">' + msg + '</p>');
             },
             error: function (e) {
-                console.log(e);
                 $('#signup_form').append('<p class="form__message form__message--error">Something went wrong, please try again.</p>');
             }
         });
