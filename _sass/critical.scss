@@ -1,7 +1,13 @@
 @import "vars.scss";
 .header {
   background-color: $colour_primary;
+  height: 100vh;
   &__inner {
-    opacity: 0;
+    display: none;
   }
+}
+
+.strips,
+.footer {
+  display: none;
 }
