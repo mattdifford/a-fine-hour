@@ -70,6 +70,11 @@ strong {
   }
   &__logo {
     display: inline-block;
+    max-width: 250px;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
   &__title {
     color: #fff;
@@ -376,4 +381,11 @@ strong {
   justify-content: center;
   padding: 20px 0;
   background: #fff;
+  &__logo {
+    max-width: 200px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
