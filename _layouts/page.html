@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+{%-include_cached head.html-%}
+
+<body>
+    <header class="header--small">
+        <div class="container">
+            {%include picture.html url="/images/upload/logo.png" alt=site.title class="header__logo" %}
+        </div>
+    </header>
+    <div class="page">
+        <div class="container">
+            {{content}}
+        </div>
+    </div>
+    {% include_cached footer.html %}
+</body>
+{% include_cached foot.html %}
+
+</html>
