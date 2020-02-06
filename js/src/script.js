@@ -66,9 +66,9 @@ $(document).ready(function () {
                                 msg = 'This email address is already subscribed';
                             }
                         }
-                        // if (success) {
-                        //     form.find('.form__field').hide();
-                        // }
+                        if (success) {
+                            gtag('event', 'Successful subscription', { 'event_category': 'Subscription', 'event_label': 'Subscribed from signup.afinehour.com' });
+                        }
                         parent_form.append('<p class="form__message ' + (success ? 'form__message--success' : 'form__message--error') + '">' + msg + '</p>');
                     },
                     error: function (e) {
