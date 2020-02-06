@@ -30,6 +30,7 @@ strong {
   }
 }
 .page {
+  font-family: $fonts_light;
   table {
     border-top: 1px solid $colour_primary;
     border-left: 1px solid $colour_primary;
@@ -177,6 +178,16 @@ strong {
       background: #ffc107;
     }
   }
+  &__disclaimer {
+    font-size: 16px;
+    font-family: $fonts_light;
+    text-transform: none;
+    margin: 10px 0 0;
+    text-align: left;
+    a {
+      color: $colour_primary;
+    }
+  }
 }
 
 .field {
@@ -186,50 +197,6 @@ strong {
   }
   &--submit {
     flex: 0 1 30%;
-  }
-
-  &--signup {
-    margin-top: 20px;
-    &.parsley-error {
-      margin-bottom: 10px;
-      .field__label {
-        color: $colour_error;
-      }
-    }
-    .field {
-      &__input {
-        position: absolute;
-        visibility: hidden;
-        width: 5px;
-        height: 5px;
-        &:checked {
-          + .field__label:before {
-            border-color: $colour_primary;
-            background: $colour_primary;
-          }
-        }
-      }
-      &__label {
-        font-size: 16px;
-        font-family: $fonts_light;
-        text-transform: none;
-        margin: 0;
-        a {
-          color: $colour_primary;
-        }
-        &:before {
-          content: "";
-          border: 2px solid $colour_border;
-          width: 15px;
-          height: 15px;
-          display: block;
-          margin-right: 10px;
-          transition: all 0.2s ease-in-out 0s;
-          float: left;
-          margin-top: 3px;
-        }
-      }
-    }
   }
   &__label {
     width: 100%;
