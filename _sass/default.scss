@@ -127,6 +127,7 @@ strong {
   align-items: flex-end;
   &__field {
     flex: 0 1 100%;
+    position: relative;
   }
   &__button {
     width: 100%;
@@ -161,6 +162,12 @@ strong {
 
   &--signup {
     margin-top: 20px;
+    &.parsley-error {
+      margin-bottom: 10px;
+      .field__label {
+        color: $colour_error;
+      }
+    }
     .field {
       &__input {
         position: absolute;
@@ -225,10 +232,28 @@ strong {
   }
 }
 
+.parsley-errors-list {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  li {
+    background: $colour_error;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px;
+    margin: 0;
+    &:before {
+      display: none;
+    }
+  }
+}
+
 .button {
   background: $colour_primary;
-  border: 2px solid $colour_primary;
   color: #fff;
+  border: 2px solid $colour_primary;
   font-family: $fonts_normal;
   padding: 8px 30px;
   font-family: $fonts_bold;
@@ -243,6 +268,14 @@ strong {
     background: #fff;
     color: $colour_primary;
   }
+  // &:disabled {
+  //   opacity: 0.5;
+  //   cursor: not-allowed;
+  //   &:hover {
+  //     background: $colour_primary;
+  //     color: #fff;
+  //   }
+  // }
 }
 .strips {
   display: block;

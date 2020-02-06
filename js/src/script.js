@@ -31,45 +31,50 @@ $(document).ready(function () {
             $("html,body").animate({ scrollTop: $($(this).attr("href")).offset().top - 100 }, 750);
         }
     });
-    $('#signup_form').on("submit", function (e) {
+    $('#signup_form .form__button').on("click", function (e) {
         e.preventDefault();
         $('.form__message').remove();
-        var formData = $(this).serializeObject();
-        formData.lp_campaign_id = '5e30378c0b5a5';
-        formData.lp_campaign_key = 'nNXfVJ7d4Gzcwby2Zp6P';
-        $.ajax({
-
-            async: true,
-            url: 'https://savvy.leadspediatrack.com/post.do',
-            data: formData,
-            type: 'POST',
-            dataType: "xml",
-            success: function (data) {
-                var response = data.all;
-                var nodes = [];
-                for (i = 0; i < response.length; i++) {
-                    nodes[data.all[i].nodeName] = i;
-                }
-                var result_index = nodes["result"];
-                var error_index = nodes["error"];
-                var success = true;
-                var msg = 'You have successfully subscribed. Check your inbox for your £15 off code';
-                var form = $('#signup_form');
-                if (response[result_index].innerHTML === 'failed') {
-                    var success = false;
-                    if (response[error_index].innerHTML === 'Invalid Email') {
-                        msg = 'Please check your email address and try again';
-                    } else {
-                        msg = 'This email address is already subscribed';
+        var parent_form = $('#signup_form');
+        parent_form.parsley().whenValidate({
+            force: true
+        }).done(function () {
+            var formData = parent_form.serializeObject();
+            formData.lp_campaign_id = '5e30378c0b5a5';
+            formData.lp_campaign_key = 'nNXfVJ7d4Gzcwby2Zp6P';
+            if (formData.updates === "on") {
+                $.ajax({
+                    async: true,
+                    url: 'https://savvy.leadspediatrack.com/post.do',
+                    data: formData,
+                    type: 'POST',
+                    dataType: "xml",
+                    success: function (data) {
+                        var response = data.all;
+                        var nodes = [];
+                        for (i = 0; i < response.length; i++) {
+                            nodes[data.all[i].nodeName] = i;
+                        }
+                        var result_index = nodes["result"];
+                        var error_index = nodes["error"];
+                        var success = true;
+                        var msg = 'You have successfully subscribed. Check your inbox for your £15 off code';
+                        if (response[result_index].innerHTML === 'failed') {
+                            var success = false;
+                            if (response[error_index].innerHTML === 'Invalid Email') {
+                                msg = 'Please check your email address and try again';
+                            } else {
+                                msg = 'This email address is already subscribed';
+                            }
+                        }
+                        // if (success) {
+                        //     form.find('.form__field').hide();
+                        // }
+                        parent_form.append('<p class="form__message ' + (success ? 'form__message--success' : 'form__message--error') + '">' + msg + '</p>');
+                    },
+                    error: function (e) {
+                        parent_form.append('<p class="form__message form__message--error">Something went wrong, please try again.</p>');
                     }
-                }
-                // if (success) {
-                //     form.find('.form__field').hide();
-                // }
-                form.append('<p class="form__message ' + (success ? 'form__message--success' : 'form__message--error') + '">' + msg + '</p>');
-            },
-            error: function (e) {
-                $('#signup_form').append('<p class="form__message form__message--error">Something went wrong, please try again.</p>');
+                });
             }
         });
     });

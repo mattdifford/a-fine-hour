@@ -1,9 +1,13 @@
 <form class="form" id="signup_form">
     <div class="form__field field field--email">
         <label for="email_address" class="field__label">Email address</label>
-        <input type="email" name="email_address" id="email_address" class="field__input">
+        <input type="email" name="email_address" id="email_address" class="field__input" required>
     </div>
     <div class="form__field field field--submit">
         <button class="button form__button">Sign up</button>
+    </div>
+    <div class="form__field field field--signup">
+        <input type="checkbox" id="updates" name="updates" class="field__input" required data-parsley-required="true">
+        <label for="updates" class="field__label">Please keep me updated on your services</label>
     </div>
 </form>
